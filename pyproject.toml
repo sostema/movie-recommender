@@ -1,0 +1,54 @@
+[tool.poetry]
+name        = "movielens-ncf"
+version     = "0.1.0"
+description = ""
+authors     = ["Artyom Sosedka <m1801239@edu.misis.ru>"]
+readme      = "README.md"
+packages    = [{ include = "movielens_ncf", from = "src" }]
+
+[tool.poetry.dependencies]
+python            = "^3.10"
+torch             = "^2.0.1"
+pytorch-lightning = "^2.0.3"
+pandas            = "^2.0.2"
+numpy             = "^1.24.3"
+tensorboard       = "^2.13.0"
+shiny             = "^0.3.3"
+shinyswatch = "^0.2.3"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy             = "^1.3.0"
+black            = { extras = ["jupyter"], version = "^23.3.0" }
+autoflake        = "^2.1.1"
+isort            = "^5.12.0"
+flake8           = "^6.0.0"
+flake8-pyproject = "^1.2.3"
+pre-commit       = "^3.3.2"
+ipywidgets       = "^8.0.6"
+
+[tool.black]
+line-length    = 120
+target-version = ['py310']
+
+[tool.flake8]
+max-line-length            = 120
+max-complexity             = 20
+max-annotations-complexity = 3
+max-expression-complexity  = 7
+extend-ignore              = ["E203", "W503"]
+
+[tool.isort]
+profile = "black"
+
+[tool.autoflake]
+check = true
+
+[tool.mypy]
+ignore_missing_imports = true
+check_untyped_defs     = true
+plugins                = "numpy.typing.mypy_plugin"
+
+[build-system]
+requires      = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
